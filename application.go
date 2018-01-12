@@ -134,6 +134,7 @@ func (a *Application) Run() error {
 			if event.Key() == tcell.KeyRune {
 				if handler, ok := a.runeOverrides[event.Rune()]; ok {
 					if !handler(p) {
+						a.Draw()
 						break
 					}
 				}
@@ -144,6 +145,7 @@ func (a *Application) Run() error {
 						pr = nil
 					}
 					if !handler(pr) {
+						a.Draw()
 						break
 					}
 				}
